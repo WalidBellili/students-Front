@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 const Home = () => {
   const [students, setStudents] = useState([]);
+  const isEmpty = students.length === 0;
 
   useEffect(() => {
     fetchData();
@@ -18,9 +19,12 @@ const Home = () => {
 
   return (
     <div>
-      {students.map((student) => {
-        return <p>{student.name}</p>;
-      })}
+      <h2>List of students</h2>
+
+      {!isEmpty &&
+        students.map((student) => {
+          return <p>{student.name}</p>;
+        })}
     </div>
   );
 };
