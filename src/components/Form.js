@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect, useState } from "react";
 
 const Form = () => {
   const [student, setStudents] = useState([]);
@@ -15,11 +16,12 @@ const Form = () => {
 
   const postStudent = async (e) => {
     e.preventDefault();
-    console.log("fff");
+    // console.log(e.target.secondChild.value);
 
     const student = {
-      name: "sjeisfjc",
+      name: e.target.children[1].value,
     };
+    console.log(student);
 
     const request = await fetch(`http://localhost:5000/students`, {
       method: "POST",
@@ -34,9 +36,10 @@ const Form = () => {
 
   return (
     <div>
-      <form action="">
+      <form action="" onSubmit={postStudent}>
         <label htmlFor="text">Add your Jacky</label>
         <input type="text" id="text" />
+        <button type="submit">btn</button>
       </form>
     </div>
   );
