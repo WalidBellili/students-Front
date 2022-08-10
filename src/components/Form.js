@@ -1,8 +1,10 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
   const [student, setStudents] = useState([]);
+  let navigate = useNavigate();
 
   useEffect(() => {
     getStudentsData();
@@ -32,6 +34,7 @@ const Form = () => {
     });
 
     const response = await request.json();
+    navigate("../students", { replace: true });
   };
 
   return (
